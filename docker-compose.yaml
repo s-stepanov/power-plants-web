@@ -4,6 +4,8 @@ services:
   backend:
     build:
       ./backend
+    env_file:
+      - ./backend/.env
     volumes:
       - ./backend:/app
     depends_on:
@@ -15,9 +17,13 @@ services:
       ./frontend
     volumes:
       - ./frontend:/app
+    env_file:
+      - ./frontend/.env
     ports:
     - '4200:4200'
   db:
     image: 'postgres'
+    env_file:
+      - ./backend/.env
     ports:
     - '5432:5432'

@@ -11,4 +11,5 @@ export class AppController {
       data: this.appService.getHello()
     };
   }
+
 }
