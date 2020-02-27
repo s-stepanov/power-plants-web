@@ -7,7 +7,7 @@ services:
     env_file:
       - ./backend/.env
     volumes:
-      - ./backend:/app
+      - ./backend/src:/app/src
     depends_on:
       - db
     ports:
@@ -16,7 +16,7 @@ services:
     build:
       ./frontend
     volumes:
-      - ./frontend:/app
+      - ./frontend/src:/app/src
     env_file:
       - ./frontend/.env
     ports:

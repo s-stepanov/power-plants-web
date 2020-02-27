@@ -1,11 +1,18 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
-import { User } from './user.entity';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseGuards } from '@nestjs/common';
+import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
-import { UserDto } from './user.dto';
+import { UserDto } from './entities/user.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('/:id')
+  async getUserById(@Param('id') id: string): Promise<User> {
+    return this.usersService.getUserById(id);
   }
 
   @Post()
@@ -20,6 +27,7 @@ export class UsersController {
     return this.usersService.register(userDto);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   async getUsers(): Promise<User[]> {
     return this.usersService.getAll();
