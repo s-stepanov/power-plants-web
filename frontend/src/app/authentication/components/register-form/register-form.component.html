@@ -1,38 +1,54 @@
 <div class="auth-form register-form">
   <mat-card>
-    <form>
+    <form [formGroup]="registrationForm">
       <h1>Регистрация</h1>
 
       <div class="auth-form__fields-container">
         <mat-form-field appearance="fill">
           <mat-label>Имя</mat-label>
-          <input matInput>
+          <input formControlName="firstName" required matInput>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Фамилия</mat-label>
-          <input matInput>
+          <input formControlName="lastName" required matInput>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput>
+          <input formControlName="email" required matInput>
+          <mat-error *ngIf="email.hasError('email')">
+            Некорректный email
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Пароль</mat-label>
-          <input type="password" matInput>
+          <input formControlName="password" required type="password" matInput>
+          <mat-error *ngIf="password.hasError('minlength')">
+            Минимальная длина пароля - 6 символов
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Подтвердите пароль</mat-label>
-          <input type="password" matInput>
+          <input formControlName="passwordConfirmation" required type="password" matInput>
+          <mat-error *ngIf="passwordConfirmation.hasError('mustMatch')">
+            Пароли не совпадают
+          </mat-error>
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="accent">Зарегистрироваться</button>
+      <button [disabled]="registrationForm.invalid" mat-raised-button color="accent" (click)="onFormSubmit($event)">Зарегистрироваться</button>
 
-      <div class="auth-form__hint-container">Уже есть аккаунт? <a routerLink="/login">Авторизоваться</a></div>
+      <div class="auth-form__hint-container">
+        <p class="auth-form__hint-container__response" *ngIf="responseMessage; else defaultMessage">
+          {{responseMessage}} <a routerLink="/login">Авторизоваться</a>
+        </p>
+        <ng-template #defaultMessage>
+          <p>{{ responseMessage ? responseMessage : '' }}Уже есть аккаунт? <a routerLink="/login">Авторизоваться</a></p>
+        </ng-template>
+      </div>
 
     </form>
   </mat-card>
