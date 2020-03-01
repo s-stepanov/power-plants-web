@@ -1,0 +1,14 @@
+.auth-form {
+  width: 400px;
+  margin: 100px auto;
+
+  &__fields-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__hint-container {
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}

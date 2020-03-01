@@ -1,5 +1,39 @@
-<div class="register-form">
-  <form>
-    <h1>Register</h1>
-  </form>
+<div class="auth-form register-form">
+  <mat-card>
+    <form>
+      <h1>Регистрация</h1>
+
+      <div class="auth-form__fields-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Имя</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Фамилия</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Пароль</mat-label>
+          <input type="password" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Подтвердите пароль</mat-label>
+          <input type="password" matInput>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="accent">Зарегистрироваться</button>
+
+      <div class="auth-form__hint-container">Уже есть аккаунт? <a routerLink="/login">Авторизоваться</a></div>
+
+    </form>
+  </mat-card>
 </div>
