@@ -1,8 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { catchError } from 'rxjs/operators';
-import { of, Subscription } from 'rxjs';
+import { AuthApiService } from '../../services/auth-api.service';
+import { Subscription } from 'rxjs';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -25,7 +24,7 @@ export class RegisterFormComponent implements OnDestroy {
 
   submitSubscription: Subscription = new Subscription();
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private authService: AuthApiService) { }
 
   passwordsMatchValidator(passwordField, passwordConfirmationField) {
     return (formGroup: FormGroup) => {

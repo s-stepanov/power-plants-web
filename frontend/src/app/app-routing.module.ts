@@ -8,7 +8,7 @@ import { AdminGuard } from './admin/admin.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     canActivate: [AuthGuard],
     component: MainWrapperComponent
   },

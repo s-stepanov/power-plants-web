@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, UserDto } from '../models/user.model';
 import { environment } from '../../../environments/environment';
+import { LoginRequest, TokenResponse } from '../models/auth.model';
 
 @Injectable()
-export class AuthService {
+export class AuthApiService {
   constructor(private http: HttpClient) {
   }
 
@@ -13,7 +14,7 @@ export class AuthService {
     return this.http.post<User>(`${environment.apiUrl}/users`, userDto);
   }
 
-  login() {}
-
-  logout() {}
+  sendLoginRequest(loginRequest: LoginRequest) {
+    return this.http.post<TokenResponse>(`${environment.apiUrl}/auth/login`, loginRequest);
+  }
 }
