@@ -6,6 +6,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -17,9 +20,10 @@ import { CoreModule } from './core/core.module';
     AuthenticationModule,
     AppRoutingModule,
     AdminModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ErrorInterceptor, JwtInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

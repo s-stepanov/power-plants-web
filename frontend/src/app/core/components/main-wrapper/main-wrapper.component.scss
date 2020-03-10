@@ -1,0 +1,15 @@
+.main-container {
+  height: calc(100vh - 60px);
+
+  .sidebar {
+    overflow: hidden;
+    width: 200px;
+
+    .btn.logout {
+      display: block;
+      position: absolute;
+      bottom: 100px;
+      left: 60px;
+    }
+  }
+}
