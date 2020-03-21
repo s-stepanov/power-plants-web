@@ -4,7 +4,7 @@ import { UsersService } from './users.service';
 import { UserDto } from './entities/user.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('users')
+@Controller('api/users')
 export class UsersController {
   constructor(private usersService: UsersService) {
   }
