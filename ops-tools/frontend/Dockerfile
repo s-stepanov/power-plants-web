@@ -12,11 +12,11 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY ./frontend/package.json /app/package.json
+COPY ./package.json /app/package.json
 RUN npm install
 
 # add app
-COPY ./frontend /app
+COPY ./ /app
 
 # run tests
 #RUN ng test --watch=false
@@ -34,7 +34,7 @@ FROM nginx:1.16.0-alpine
 
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY ./ops-tools/frontend/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # copy artifact build from the 'build environment'
 COPY --from=build /app/dist /usr/share/nginx/html

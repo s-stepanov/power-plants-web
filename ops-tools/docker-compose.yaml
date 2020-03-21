@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: power-plants/backend
+    image: sstepanov97/power-plants-backend
     env_file:
       - ../backend/.env
     depends_on:
@@ -10,7 +10,9 @@ services:
     ports:
       - '3000:3000'
   frontend:
-    image: power-plants/frontend
+    image: sstepanov97/power-plants-frontend
+    depends_on:
+      - backend
     env_file:
       - ../frontend/.env
     ports:
