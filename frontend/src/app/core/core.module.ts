@@ -6,7 +6,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-
+import { RouterModule } from '@angular/router';
+import { VisualizationModule } from '../visualization/visualization.module';
 
 @NgModule({
   declarations: [HeaderComponent, MainWrapperComponent, NotFoundComponent],
@@ -15,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    VisualizationModule,
+    RouterModule,
   ],
 })
-export class CoreModule { }
+export class CoreModule {}

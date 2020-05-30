@@ -1,7 +1,26 @@
 <app-header></app-header>
 <mat-sidenav-container class="main-container">
   <mat-sidenav opened mode="side" class="sidebar">
-    <button (click)="logout()" class="logout btn" mat-raised-button>Logout</button>
+    <button (click)="logout()" class="logout btn" mat-raised-button>
+      Logout
+    </button>
   </mat-sidenav>
-  Implicit main content
+
+  <router-outlet></router-outlet>
+  <div class="power-plant-info">
+    <h1>Ветряная электростанция</h1>
+    <div>
+      Координаты: Широта: -7.881213 Долгота: 43.354377
+    </div>
+
+    <app-prediction-chart [data]="predictedData"></app-prediction-chart>
+
+    <button (click)="performPrediction()">
+      Получить Прогноз
+    </button>
+
+    <div class="windrose-container">
+      <app-windrose-chart [data]="windRoseData"></app-windrose-chart>
+    </div>
+  </div>
 </mat-sidenav-container>
